@@ -1,0 +1,22 @@
+# Ensure all variations of virtual environments are blocked
+venv/
+.venv/
+env/
+**/venv/
+**/.venv/
+
+# Block any local node modules if frontend code is in the root
+node_modules/
+**/node_modules/
+
+# Block hidden files, caches, and system files
+.git/
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+
+# Block heavy database or media files if you have them locally
+*.db
+*.sqlite
+*.sqlite3
