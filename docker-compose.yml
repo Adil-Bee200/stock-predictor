@@ -1,5 +1,8 @@
 services:
   backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     image: backend_image:latest
     ports:
       - "8000:8000"
