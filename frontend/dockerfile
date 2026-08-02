@@ -1,0 +1,21 @@
+# Step 1: Build the frontend application
+
+FROM node:26.3.0-alpine AS builder
+
+WORKDIR /frontend 
+
+COPY package.json package-lock.json ./
+
+RUN npm ci 
+
+COPY . .
+
+RUN npm run build 
+
+# Step 2: Serve the build frontend using nginx
+
+FROM nginx:1.23-alpine
+
+COPY --from=builder /frontend/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
